@@ -104,6 +104,8 @@ def get_logger(name, lvl_str='INFO', lvl_env=None, root_logger='', logpath='', n
 
     # Init root logger if it has no handlers set yet
     if not log.hasHandlers():
+        if not root_logger:
+            root_logger = name.split('.')[0]
         init_root_logger(root_logger, logpath, namemode)
         log = logging.getLogger(name)
 
